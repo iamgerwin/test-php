@@ -13,8 +13,17 @@ class BookTest extends PHPUnit_Framework_TestCase
 
   function testHasATitle()
   {
-    $this->book->setTitle("Nice Book");
+    $books = ["PHP Book", "Ruby Book"];
+    foreach($books as $book) {
+      $slate = $this->createBook();
+      $slate->setTitle($book);
 
-    $this->assertEquals("Nice Book", $this->book->getTitle());
+      $this->assertEquals($book, $slate->getTitle());
+    }
+  }
+
+  private function createBook()
+  {
+    return new Book();
   }
 }
